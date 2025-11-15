@@ -1,0 +1,43 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+venv/
+.env/
+.envrc
+*.env
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints
+
+# Environment config
+.env
+*.env
+
+# FAISS index files (if saved to disk)
+*.faiss
+*.pkl
+
+# Streamlit
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+
+# VSCode settings (optional)
+.vscode/
+
+# PyCharm settings (optional)
+.idea/
+
