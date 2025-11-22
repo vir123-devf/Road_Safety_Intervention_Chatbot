@@ -1,6 +1,3 @@
-
-
-
 # 🚦 Road Safety Intervention Chatbot (RAG-Powered)
 
 This chatbot is a GPT-based AI tool designed to identify the most appropriate road safety interventions for specific traffic safety issues observed within a road network. It leverages Retrieval-Augmented Generation (RAG) to search and retrieve relevant guidance from a curated database of interventions compiled from global best practices, IRC and MoRTH guidelines, and road safety audit reports.
@@ -24,7 +21,8 @@ Built using Streamlit, FAISS, HuggingFace embeddings, and Cohere’s `command-r-
 
 ## 📸 Screenshots
 
-<img width="1908" height="786" alt="image" src="https://github.com/user-attachments/assets/c12a8859-e47a-4344-925f-b8b421bb67c3" />
+<img width="1916" height="835" alt="image" src="https://github.com/user-attachments/assets/ccbdf009-bc69-4852-9ec6-bdd7dbfb0c0b" />
+<img width="1908" height="826" alt="image" src="https://github.com/user-attachments/assets/f8cedad3-a970-4122-bacf-030b1e0c599b" />
 
 ---
 
@@ -53,6 +51,8 @@ The report includes:
 * 🖼️ Includes visual backgrounds in both app and report
 
 ---
+## Work FlowChart:-
+
 
 ## 📘 Project Use Case
 
