@@ -1,3 +1,4 @@
+# cxc file for faiss index
 import pandas as pd
 from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
@@ -12,3 +13,4 @@ embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-b
 db = FAISS.from_documents(docs, embeddings)
 db.save_local("index")
 print("✅ FAISS index saved as 'index/'")
+
