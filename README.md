@@ -52,6 +52,7 @@ The report includes:
 
 ---
 ## Work FlowChart:-
+<img width="1124" height="600" alt="image" src="https://github.com/user-attachments/assets/da1c66c6-8bfb-4c4f-8199-06ae934add55" />
 
 
 ## 📘 Project Use Case
@@ -164,4 +165,12 @@ Try asking:
 
 ---
 
+## ✨ Made By
+
+*Team Name:* *Team Rakshak*
+
+*Team Members:*
+
+* Vidhan Gauswami
+* Virendra Badgotya
 
