@@ -72,7 +72,7 @@ You MUST follow these rules strictly:
 2. DO NOT use prior knowledge or information from the internet.
 3. DO NOT mention MUTCD, AASHTO, WHO, FHWA, or any foreign standards.
 4. All recommendations MUST be based on IRC or MoRTH guidelines present in the CONTEXT.
-5. Every recommendation MUST include an explicit IRC or MoRTH reference (e.g., IRC:SP:67, IRC:103).
+5. Every intervention MUST include an explicit IRC or MoRTH reference (e.g., IRC:82-2020, IRC:103-2012).
 6. If the CONTEXT does not contain sufficient information, reply exactly:
    "Relevant IRC/MoRTH guidance not found in the provided documents."
 
@@ -83,11 +83,41 @@ USER ISSUE:
 {query}
 
 RESPONSE FORMAT (MANDATORY):
-- Identified Safety Risk:
-- Recommended Intervention:
-- Reasoning:
-- IRC / MoRTH Reference:
+
+### Recommended Safety Interventions for the Identified Location
+
+[Write a short introductory paragraph summarizing the overall safety approach 
+(e.g., traffic calming, pedestrian safety, visibility, signage, traffic control),
+based ONLY on the CONTEXT.]
+
+---
+
+### 1. <Intervention Title>
+**(Clause: <IRC / MoRTH Reference>)**
+<Explain the intervention and how it improves safety using only the CONTEXT.>
+
+---
+
+### 2. <Intervention Title>
+**(Clause: <IRC / MoRTH Reference>)**
+<Explain the intervention.>
+
+---
+
+[Continue numbering as required based on identified risks.]
+
+---
+
+### Reasoning
+<Provide one consolidated reasoning paragraph explaining how the combined 
+interventions address the identified safety risks, using only the CONTEXT.>
+
+---
+
+### Reference Clauses
+<List all IRC and MoRTH references cited above. Do not add new references.>
 """
+
 
 
     return llm.invoke(prompt).content
