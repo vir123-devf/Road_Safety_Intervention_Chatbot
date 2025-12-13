@@ -52,7 +52,8 @@ The report includes:
 
 ---
 ## Work FlowChart:-
-<img width="1124" height="600" alt="image" src="https://github.com/user-attachments/assets/da1c66c6-8bfb-4c4f-8199-06ae934add55" />
+<img width="1041" height="495" alt="image" src="https://github.com/user-attachments/assets/44e994e9-8d35-4004-877b-caa1a1802876" />
+
 
 
 ## 📘 Project Use Case
