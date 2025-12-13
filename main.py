@@ -69,7 +69,7 @@ def get_intervention(query, db, llm, k=3):
     Respond to this issue: {query}
     DO NOT use prior knowledge or information from the internet.
     DO NOT mention MUTCD, AASHTO, WHO, FHWA, or any foreign standards
-    Provide a clear recommendation with reasoning and reference any clause or section if applicable.
+    Provide a clear recommendation with reasoning and reference relevant clause and section if applicable.
     If unsure, respond with 'I don't know'.
     """
     return llm.invoke(prompt).content
