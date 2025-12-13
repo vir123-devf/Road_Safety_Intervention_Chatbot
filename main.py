@@ -65,61 +65,16 @@ def get_intervention(query, db, llm, k=3):
     context = "\n".join([doc.page_content for doc in results])[:2500]
 
     prompt = f"""
-You are a Road Safety Audit Assistant.
-
-You MUST follow these rules strictly:
-1. Use ONLY the information provided in the CONTEXT below.
-2. DO NOT use prior knowledge or information from the internet.
-3. DO NOT mention MUTCD, AASHTO, WHO, FHWA, or any foreign standards.
-4. All recommendations MUST be based on IRC or MoRTH guidelines present in the CONTEXT.
-5. Every intervention MUST include an explicit IRC or MoRTH reference (e.g., IRC:82-2020, IRC:103-2012).
-6. If the CONTEXT does not contain sufficient information, reply exactly:
-   "Relevant IRC/MoRTH guidance not found in the provided documents."
-
-CONTEXT (Authoritative IRC/MoRTH Documents):
-{context}
-
-USER ISSUE:
-{query}
-
-RESPONSE FORMAT (MANDATORY):
-One line space then start the response
-
-[Write a short introductory paragraph summarizing the overall safety approach 
-(e.g., traffic calming, pedestrian safety, visibility, signage, traffic control),
-based ONLY on the CONTEXT.]
-
----
-
-### 1. <Intervention Title>
-**(Clause: <IRC / MoRTH Reference>)**
-<Explain the intervention and how it improves safety using only the CONTEXT.>
-
----
-
-### 2. <Intervention Title>
-**(Clause: <IRC / MoRTH Reference>)**
-<Explain the intervention.>
-
----
-
-[Continue numbering as required based on identified risks.]
-
----
-
-### Reasoning
-<Provide one consolidated reasoning paragraph explaining how the combined 
-interventions address the identified safety risks, using only the CONTEXT.>
-
----
-
-### Reference Clauses
-<List all IRC and MoRTH references cited above. Do not add new references.>
-"""
-
-
-
+    Based on the following road safety guidelines:\n{context}\n
+    Respond to this issue: {query}
+    DO NOT use prior knowledge or information from the internet.
+    DO NOT mention MUTCD, AASHTO, WHO, FHWA, or any foreign standards
+    Provide a clear recommendation with reasoning and reference any clause or section if applicable.
+    If unsure, respond with 'I don't know'.
+    """
     return llm.invoke(prompt).content
+
+
 
 # PDF function (Creating Pdf of Conversation History)
 def generate_pdf(chat_history):
