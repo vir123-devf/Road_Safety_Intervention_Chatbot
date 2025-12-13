@@ -84,8 +84,6 @@ USER ISSUE:
 
 RESPONSE FORMAT (MANDATORY):
 
-**Recommendation:** 
-
 [Write a short introductory paragraph summarizing the overall safety approach 
 (e.g., traffic calming, pedestrian safety, visibility, signage, traffic control),
 based ONLY on the CONTEXT.]
