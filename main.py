@@ -84,7 +84,7 @@ USER ISSUE:
 
 RESPONSE FORMAT (MANDATORY):
 
-### Recommended Safety Interventions for the Identified Location
+**Recommendation:** 
 
 [Write a short introductory paragraph summarizing the overall safety approach 
 (e.g., traffic calming, pedestrian safety, visibility, signage, traffic control),
