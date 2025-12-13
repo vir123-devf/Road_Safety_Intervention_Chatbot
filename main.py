@@ -1,7 +1,7 @@
 # Importing Required Packages
 import streamlit as st
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.chat_models import ChatCohere
+from langchain_community.chat_models import ChatCohere 
 from langchain_community.vectorstores import Chroma
 from chromadb.config import Settings
 from dotenv import load_dotenv
@@ -83,6 +83,7 @@ USER ISSUE:
 {query}
 
 RESPONSE FORMAT (MANDATORY):
+One line space then start the response
 
 [Write a short introductory paragraph summarizing the overall safety approach 
 (e.g., traffic calming, pedestrian safety, visibility, signage, traffic control),
