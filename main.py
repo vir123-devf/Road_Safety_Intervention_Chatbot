@@ -1,3 +1,4 @@
+# Importing Required Packages
 import streamlit as st
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.chat_models import ChatCohere
@@ -15,10 +16,10 @@ import base64
 
 # Streamlit UI
 st.set_page_config(page_title="Road Safety Chatbot", layout="centered")
-st.title("💬 Road Safety Intervention Chatbot (RAG-Powered)")
-st.markdown("Ask multiple road safety questions. Context is retrieved fresh for each.")
+st.title("🛣️ MargRaksha AI")
+st.markdown("🛡️ Ask multiple road safety questions. Every response is powered by freshly retrieved, standards-aligned intelligence.")
 
-# Background
+# Setting Background Image
 def add_bg_from_local(image_file):
     with open(image_file, "rb") as f:
         encoded = base64.b64encode(f.read()).decode()
@@ -38,7 +39,7 @@ def add_bg_from_local(image_file):
 
 add_bg_from_local("Road Safety.png")
 
-# Load env env vars
+# Load .env vars
 load_dotenv()
 cohere_api_key = os.getenv("COHERE_API_KEY")
 
@@ -47,31 +48,51 @@ cohere_api_key = os.getenv("COHERE_API_KEY")
 def load_db():
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
     db = Chroma(
-        persist_directory="index",
+        persist_directory="index",     # Index file contain Embedding of GPT_Input_DB.xlsx (Done with help of cxc.py)
         embedding_function=embeddings,
         client_settings=Settings(anonymized_telemetry=False)
     )
     return db
 
-# Load Cohere LLM
+# Load Cohere LLM (Open source LLM)
 @st.cache_resource
 def load_llm():
     return ChatCohere(model="command-r-plus", temperature=0, cohere_api_key=cohere_api_key)
 
-# RAG function
+# RAG function (Taking Top 3 Retrived Context and prompt included)
 def get_intervention(query, db, llm, k=3):
     results = db.similarity_search(query, k=k)
     context = "\n".join([doc.page_content for doc in results])[:2500]
 
     prompt = f"""
-    Based on the following road safety guidelines:\n{context}\n
-    Respond to this issue: {query}
-    Provide a clear recommendation with reasoning and reference any clause or section if applicable.
-    If unsure, respond with 'I don't know'.
-    """
+You are a Road Safety Audit Assistant.
+
+You MUST follow these rules strictly:
+1. Use ONLY the information provided in the CONTEXT below.
+2. DO NOT use prior knowledge or information from the internet.
+3. DO NOT mention MUTCD, AASHTO, WHO, FHWA, or any foreign standards.
+4. All recommendations MUST be based on IRC or MoRTH guidelines present in the CONTEXT.
+5. Every recommendation MUST include an explicit IRC or MoRTH reference (e.g., IRC:SP:67, IRC:103).
+6. If the CONTEXT does not contain sufficient information, reply exactly:
+   "Relevant IRC/MoRTH guidance not found in the provided documents."
+
+CONTEXT (Authoritative IRC/MoRTH Documents):
+{context}
+
+USER ISSUE:
+{query}
+
+RESPONSE FORMAT (MANDATORY):
+- Identified Safety Risk:
+- Recommended Intervention:
+- Reasoning:
+- IRC / MoRTH Reference:
+"""
+
+
     return llm.invoke(prompt).content
 
-# PDF function
+# PDF function (Creating Pdf of Conversation History)
 def generate_pdf(chat_history):
     buffer = io.BytesIO()
     pdf = canvas.Canvas(buffer, pagesize=letter)
@@ -85,7 +106,7 @@ def generate_pdf(chat_history):
     draw_background()
 
     pdf.setFont("Times-Bold", 16)
-    pdf.drawString(40, 750, "Road Safety Intervention Chatbot - Conversation History")
+    pdf.drawString(40, 750, "🛣️ MargRaksha AI - Conversation History")
     pdf.setFont("Times-Roman", 12)
 
     x, y = 40, 710
@@ -137,7 +158,7 @@ for sender, message in st.session_state.chat_history:
     if sender == "user":
         st.markdown(f"🧑 **You:** {message}")
     else:
-        st.markdown(f"🤖 **Bot:** {message}")
+        st.markdown(f"🦺 **MargRaksha AI:**  {message}")
 
 # PDF download
 if st.session_state.chat_history:
@@ -145,6 +166,6 @@ if st.session_state.chat_history:
     st.download_button(
         label="📄 Download Chat as PDF",
         data=pdf_buffer,
-        file_name="road_safety_chat_history.pdf",
+        file_name="MargRaksha_AI_chat_history.pdf",
         mime="application/pdf"
     )
