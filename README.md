@@ -20,9 +20,10 @@ Built using Streamlit, FAISS, HuggingFace embeddings, and Cohere’s `command-r-
 ---
 
 ## 📸 Screenshots
+<img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/4c83b9ed-52ec-46c8-85b8-5eac31e3f498" />
+<img width="1919" height="906" alt="image" src="https://github.com/user-attachments/assets/945cbcfc-b0a7-4fef-a203-1e2cc28389de" />
+<img width="1919" height="833" alt="image" src="https://github.com/user-attachments/assets/1e496bd6-4593-4dd9-a80f-4d3dac4f80f6" />
 
-<img width="1916" height="835" alt="image" src="https://github.com/user-attachments/assets/ccbdf009-bc69-4852-9ec6-bdd7dbfb0c0b" />
-<img width="1908" height="826" alt="image" src="https://github.com/user-attachments/assets/f8cedad3-a970-4122-bacf-030b1e0c599b" />
 
 ---
 
