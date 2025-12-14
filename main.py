@@ -318,11 +318,21 @@ def generate_pdf(history):
     top_margin = height - 40
     bottom_margin = 40
 
+    # -------- TITLE --------
+    pdf.setFont("Times-Bold", 16)
+    pdf.drawCentredString(width / 2, top_margin, "Conversation Chat History")
+
+    # horizontal line under title
+    pdf.setLineWidth(1)
+    pdf.line(left_margin, top_margin - 10, right_margin, top_margin - 10)
+
+    # move content below title
+    y = top_margin - 40
+
     pdf.setFont("Times-Roman", 12)
-    y = top_margin
 
     for role, message in history:
-        # ---- New page check (before role title) ----
+        # ---- Page break check ----
         if y <= bottom_margin:
             pdf.showPage()
             pdf.setFont("Times-Roman", 12)
@@ -339,7 +349,6 @@ def generate_pdf(history):
         )
 
         for line in wrapped_lines:
-            # ---- New page check (before each line) ----
             if y <= bottom_margin:
                 pdf.showPage()
                 pdf.setFont("Times-Roman", 12)
