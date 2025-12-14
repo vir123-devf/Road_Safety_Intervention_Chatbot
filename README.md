@@ -31,7 +31,7 @@ Built using Streamlit, FAISS, HuggingFace embeddings, and Cohere’s `command-r-
 
 Download a sample generated report from a real chat session:
 
-📥 **[Sample Chat Report (PDF)](road_safety_chat_history.pdf)**
+📥 **[Sample Chat Report (PDF)](road_safety_chat_history.pdf)** 
 
 The report includes:
 
