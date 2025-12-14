@@ -311,20 +311,49 @@ for role, msg in st.session_state.chat_history:
 def generate_pdf(history):
     buf = io.BytesIO()
     pdf = canvas.Canvas(buf, pagesize=letter)
-    pdf.setFont("Times-Roman", 12)
 
-    y = 750
+    width, height = letter
+    left_margin = 40
+    right_margin = 520
+    top_margin = height - 40
+    bottom_margin = 40
+
+    pdf.setFont("Times-Roman", 12)
+    y = top_margin
+
     for role, message in history:
-        pdf.drawString(40, y, f"{role}:")
-        y -= 15
-        for line in simpleSplit(message, "Times-Roman", 12, 520):
-            pdf.drawString(60, y, line)
+        # ---- New page check (before role title) ----
+        if y <= bottom_margin:
+            pdf.showPage()
+            pdf.setFont("Times-Roman", 12)
+            y = top_margin
+
+        pdf.drawString(left_margin, y, f"{role}:")
+        y -= 18
+
+        wrapped_lines = simpleSplit(
+            message,
+            "Times-Roman",
+            12,
+            right_margin - left_margin
+        )
+
+        for line in wrapped_lines:
+            # ---- New page check (before each line) ----
+            if y <= bottom_margin:
+                pdf.showPage()
+                pdf.setFont("Times-Roman", 12)
+                y = top_margin
+
+            pdf.drawString(left_margin + 20, y, line)
             y -= 14
-        y -= 10
+
+        y -= 10  # space between messages
 
     pdf.save()
     buf.seek(0)
     return buf
+
 
 if st.session_state.chat_history:
     st.download_button(
