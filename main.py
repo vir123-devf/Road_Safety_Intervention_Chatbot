@@ -293,11 +293,11 @@ if st.button("Analyze"):
             response = get_intervention(issue, sensor_input, db, llm)
 
             if issue.strip():
-                st.session_state.chat_history.append(("User Query", issue))
+                st.session_state.chat_history.append(("🧑‍💼 User Query", issue))
             if sensor_input.strip():
-                st.session_state.chat_history.append(("Sensor Data", sensor_input))
+                st.session_state.chat_history.append(("📋 Sensor Data", sensor_input))
 
-            st.session_state.chat_history.append(("Bot", response))
+            st.session_state.chat_history.append(("🦺 Bot", response))
 
 # -------------------------------------------------
 # DISPLAY
